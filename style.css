@@ -1,0 +1,96 @@
+body {
+  background-color: #c8c8c8;
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+main {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.calculator {
+  display: inline-block;
+  background-color: #756971;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.displays {
+  background-color: #7b7678;
+  text-align: right;
+  border: 2px solid #372929;
+  margin-bottom: 15px;
+  padding: 4px;
+}
+
+.displayBig,
+.displaySmall {
+  position: relative;
+}
+.borders {
+  border-radius: 5px;
+  box-shadow: 0 0 0 5px #625458;
+}
+
+.txtDisplay {
+  color: #372929;
+  font-family: "digital-7regular";
+  font-size: 50px;
+}
+.backgroundTxt {
+  color: #3729290f;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.txtDisplay.small {
+  font-size: 20px;
+}
+
+.btn-wrapper {
+  margin-top: 7px;
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 1px;
+}
+
+.btn {
+  height: 50px;
+  width: 50px;
+  background-color: #5e4d53;
+  border: 2px solid #372929;
+  border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.11) 3px 3px 0px inset,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px inset,
+    rgba(0, 0, 0, 0.2) -3px -3px 0px inset;
+
+  color: #eaedec;
+  font-size: 25px;
+  transition: 0.2s;
+}
+.btn:active {
+  box-shadow: none;
+  font-size: 24px;
+  transform: translateY(2px);
+}
+
+.orange-btn {
+  background-color: #e07d21;
+}
+.white-btn {
+  background-color: #c8c8c8;
+  color: #372929;
+}
+
+/* font */
+@font-face {
+  font-family: "digital-7regular";
+  src: url("fonts/digital-7-webfont.woff2") format("woff2"),
+    url("fonts/digital-7-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
