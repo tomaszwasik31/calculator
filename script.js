@@ -18,11 +18,11 @@ function operate(operator, a, b) {
   }
 }
 
-let displayBigValue = '123';
+let displayBigValue;
 const displayBig = document.getElementById("displayBig");
 displayBig.textContent = displayBigValue;
 
-let displaySmallValue = '123';
+let displaySmallValue;
 const displaySmall = document.getElementById("displaySmall");
 displaySmall.textContent = displaySmallValue;
 
@@ -93,9 +93,8 @@ btn0.addEventListener("click", () => {
 });
 
 btnC.addEventListener("click", () => {
-    clearBigDisplay();
-  });
-
+  clearBigDisplay();
+});
 
 function populateBigDisplay() {
   displayBig.textContent += inputNumber;
@@ -104,10 +103,23 @@ function populateBigDisplay() {
 let inputValue;
 function storeInputValue() {
   inputValue = displayBig.textContent;
-  clearBigDisplay();
+
   return Number(inputValue);
 }
 
 function clearBigDisplay() {
-  displayBig.textContent = '';
+  displayBig.textContent = "";
+}
+// operations
+let lastOperation;
+
+btnPlus.addEventListener("click", () => {
+    lastOperation = '+';
+  operation();
+});
+
+function operation() {
+  storeInputValue();
+  displaySmall.textContent += `${inputValue}${lastOperation}`;
+  clearBigDisplay();
 }
