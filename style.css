@@ -24,6 +24,7 @@ main {
   border: 2px solid #372929;
   margin-bottom: 15px;
   padding: 4px;
+  pointer-events: none;
 }
 
 .displayBig,
@@ -52,7 +53,7 @@ main {
 }
 
 .btn-wrapper {
-    background-color: #bc458c;
+  background-color: #bc458c;
   margin-top: 7px;
   display: inline-grid;
   grid-template-columns: repeat(4, auto);
