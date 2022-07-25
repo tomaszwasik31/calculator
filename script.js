@@ -100,26 +100,69 @@ function populateBigDisplay() {
   displayBig.textContent += inputNumber;
 }
 
-let inputValue;
-function storeInputValue() {
-  inputValue = displayBig.textContent;
-
-  return Number(inputValue);
-}
-
 function clearBigDisplay() {
   displayBig.textContent = "";
 }
 // operations
-let lastOperation;
+let lastOperation = "";
+let storedValue = 0;
 
 btnPlus.addEventListener("click", () => {
-    lastOperation = '+';
-  operation();
+  lastOperation = "+";
+  storedValue = Number(displayBig.textContent);
+  calculate();
+  clearBigDisplay();
 });
 
-function operation() {
-  storeInputValue();
-  displaySmall.textContent += `${inputValue}${lastOperation}`;
+btnMinus.addEventListener("click", () => {
+  lastOperation = "-";
+  storedValue = Number(displayBig.textContent);
+  calculate();
   clearBigDisplay();
+});
+
+btnMultiply.addEventListener("click", () => {
+  lastOperation = "x";
+  storedValue = Number(displayBig.textContent);
+  calculate();
+  clearBigDisplay();
+});
+
+btnDivide.addEventListener("click", () => {
+  lastOperation = "/";
+  storedValue = Number(displayBig.textContent);
+  calculate();
+  clearBigDisplay();
+});
+
+function smallDisplayUpdate() {
+  clearBigDisplay();
+}
+
+btnEqual.addEventListener("click", () => {
+  calculate();
+});
+
+function calculate() {
+  a = storedValue;
+  b = Number(displayBig.textContent);
+  if (lastOperation === "+") {
+    displayBig.textContent = add(a, b);
+    displaySmall.textContent = `${storedValue}${lastOperation}`;
+  }
+
+  if (lastOperation === "-") {
+    displayBig.textContent = subtract(a, b);
+    displaySmall.textContent = `${storedValue}${lastOperation}`;
+  }
+
+  if (lastOperation === "x") {
+    displayBig.textContent = multiply(a, b);
+    displaySmall.textContent = `${storedValue}${lastOperation}`;
+  }
+
+  if (lastOperation === "/") {
+    displayBig.textContent = divide(a, b);
+    displaySmall.textContent = `${storedValue}${lastOperation}`;
+  }
 }
