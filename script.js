@@ -25,6 +25,15 @@ let inputNumber;
 let lastOperation;
 let storedValue;
 
+//keyboard support
+
+window.addEventListener("keydown", function (e) {
+    const keyBtn = document.querySelector(`button[data-key="${e.key}"]`);
+    if (!keyBtn) return;
+    keyBtn.click();
+  });
+  
+
 btn1.addEventListener("click", () => {
   inputNumber = 1;
   populateBigDisplay();
@@ -114,8 +123,7 @@ btnEqual.addEventListener("click", () => {
 btnC.addEventListener("click", () => {
   clearBigDisplay();
   clearSmallDisplay();
-  lastOperation = "";
-  storedValue = 0;
+  lastOperation === "";
 });
 
 btnCe.addEventListener("click", () => {
@@ -130,10 +138,10 @@ let divide = (a, b) => round(a / b);
 let percent = (a) => round(a * 0.01);
 let root = (a) => round(Math.sqrt(a));
 
-let round = (a) => Math.round(a * 1000000) / 1000000;
+let round = (a) => Math.round(a * 10000000) / 10000000;
 
 function populateBigDisplay() {
-  if (displayBig.textContent.length < 8) {
+  if (displayBig.textContent.length < 10) {
     displayBig.textContent += inputNumber;
   }
 }
@@ -159,8 +167,8 @@ function doBasicOperation() {
 
 //reduce length of string
 function reduceLength() {
-  if (displayBig.textContent.length > 8)
-    displayBig.textContent = `${displayBig.textContent.substring(0, 7)}e`;
+  if (displayBig.textContent.length > 10)
+    displayBig.textContent = `${displayBig.textContent.substring(0, 9)}e`;
 }
 function calculate() {
   let a = storedValue;
@@ -182,7 +190,7 @@ function calculate() {
   }
 
   if (lastOperation === "÷") {
-    if (b == 0) {
+    if (b === 0) {
       return errorMsg();
     }
     displayBig.textContent = divide(a, b);
@@ -201,10 +209,3 @@ function calculate() {
   reduceLength();
 }
 
-//keyboard support
-
-window.addEventListener("keyup", function (e) {
-  const keyBtn = document.querySelector(`button[data-key="${e.key}"]`);
-  if (!keyBtn) return;
-  keyBtn.click();
-});

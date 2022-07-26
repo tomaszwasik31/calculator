@@ -5,7 +5,7 @@ body {
 p {
   margin: 0;
   padding: 0;
-  line-height-step: 0;
+  
 }
 main {
   display: flex;
@@ -16,16 +16,16 @@ main {
 .calculator {
   display: inline-block;
   background-color: #d36db1;
-  padding: 15px;
+  padding: 25px;
   border-radius: 15px;
 }
 
 .displays {
   background-color: #7b7678;
   text-align: right;
-  border: 2px solid #372929;
-  margin-bottom: 15px;
-  padding: 4px;
+  border: 3px solid #372929;
+  margin-bottom: 25px;
+  padding: 5px;
   pointer-events: none;
   
 }
@@ -36,20 +36,20 @@ main {
   
 }
 .displayBig{
-    height: 45px;
+    height: 55px;
 }
 .displaySmall {
-    height: 18px;
+    height: 29px;
 }
 .borders {
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 0 0 5px #bc458c;
 }
 
 .txtDisplay {
   color: #372929;
   font-family: "digital-7regular";
-  font-size: 50px;
+  font-size: 60px;
   
 }
 .backgroundTxt {
@@ -60,7 +60,7 @@ main {
 }
 
 .txtDisplay.small {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .btn-wrapper {
@@ -68,12 +68,12 @@ main {
   margin-top: 7px;
   display: inline-grid;
   grid-template-columns: repeat(4, auto);
-  gap: 1px;
+  gap: 2px;
 }
 
 .btn {
-  height: 50px;
-  width: 50px;
+  height: 70px;
+  width: 80px;
   background-color: #993377;
   border: 2px solid #372929;
   border-radius: 5px;
@@ -82,7 +82,7 @@ main {
     rgba(0, 0, 0, 0.2) -3px -3px 0px inset;
 
   color: #eaedec;
-  font-size: 25px;
+  font-size: 35px;
   transition: 0.2s;
 }
 .btn:active {
