@@ -67,6 +67,13 @@ btn0.addEventListener("click", () => {
   populateBigDisplay();
 });
 
+btnDot.addEventListener("click", () => {
+  if (!displayBig.textContent.includes(".")) {
+    inputNumber = ".";
+    populateBigDisplay();
+  }
+});
+
 // operations
 
 btnPlus.addEventListener("click", () => {
@@ -149,8 +156,8 @@ function doBasicOperation() {
 }
 
 function calculate() {
-  a = storedValue;
-  b = Number(displayBig.textContent);
+  let a = storedValue;
+  let b = Number(displayBig.textContent);
 
   if (lastOperation === "+") {
     displayBig.textContent = add(a, b);
