@@ -1,31 +1,5 @@
-let add = (a, b) => a + b;
-let subtract = (a, b) => a - b;
-let multiply = (a, b) => a * b;
-let divide = (a, b) => a / b;
-
-function operate(operator, a, b) {
-  if (operator === "add") {
-    return add(a, b);
-  }
-  if (operator === "subtract") {
-    return subtract(a, b);
-  }
-  if (operator === "multiply") {
-    return multiply(a, b);
-  }
-  if (operator === "divide") {
-    return divide(a, b);
-  }
-}
-
-let displayBigValue;
 const displayBig = document.getElementById("displayBig");
-displayBig.textContent = displayBigValue;
-
-let displaySmallValue;
 const displaySmall = document.getElementById("displaySmall");
-displaySmall.textContent = displaySmallValue;
-
 const btn1 = document.getElementById("1");
 const btn2 = document.getElementById("2");
 const btn3 = document.getElementById("3");
@@ -48,12 +22,13 @@ const btnPlus = document.getElementById("plus");
 const btnPercent = document.getElementById("percent");
 
 let inputNumber;
+let lastOperation;
+let storedValue;
 
 btn1.addEventListener("click", () => {
   inputNumber = 1;
   populateBigDisplay();
 });
-
 btn2.addEventListener("click", () => {
   inputNumber = 2;
   populateBigDisplay();
@@ -92,9 +67,63 @@ btn0.addEventListener("click", () => {
   populateBigDisplay();
 });
 
+// operations
+
+btnPlus.addEventListener("click", () => {
+  lastOperation = "+";
+  doBasicOperation();
+});
+
+btnMinus.addEventListener("click", () => {
+  lastOperation = "-";
+  doBasicOperation();
+});
+
+btnMultiply.addEventListener("click", () => {
+  lastOperation = "x";
+  doBasicOperation();
+});
+
+btnDivide.addEventListener("click", () => {
+  lastOperation = "÷";
+  doBasicOperation();
+});
+btnPercent.addEventListener("click", () => {
+  lastOperation = "%";
+  storedValue = Number(displayBig.textContent);
+  calculate();
+});
+
+btnRoot.addEventListener("click", () => {
+  lastOperation = "√";
+  storedValue = Number(displayBig.textContent);
+  calculate();
+});
+
+btnEqual.addEventListener("click", () => {
+  calculate();
+});
+
 btnC.addEventListener("click", () => {
   clearBigDisplay();
+  clearSmallDisplay();
+  lastOperation = "";
+  storedValue = 0;
 });
+
+btnCe.addEventListener("click", () => {
+  displayBig.textContent = displayBig.textContent.slice(0, -1);
+});
+
+// functions
+let add = (a, b) => round(a + b);
+let subtract = (a, b) => round(a - b);
+let multiply = (a, b) => round(a * b);
+let divide = (a, b) => round(a / b);
+let percent = (a) => round(a * 0.01);
+let root = (a) => round(Math.sqrt(a));
+
+let round = (a) => Math.round(a * 1000000) / 1000000;
 
 function populateBigDisplay() {
   displayBig.textContent += inputNumber;
@@ -103,66 +132,56 @@ function populateBigDisplay() {
 function clearBigDisplay() {
   displayBig.textContent = "";
 }
-// operations
-let lastOperation = "";
-let storedValue = 0;
 
-btnPlus.addEventListener("click", () => {
-  lastOperation = "+";
-  storedValue = Number(displayBig.textContent);
-  calculate();
-  clearBigDisplay();
-});
-
-btnMinus.addEventListener("click", () => {
-  lastOperation = "-";
-  storedValue = Number(displayBig.textContent);
-  calculate();
-  clearBigDisplay();
-});
-
-btnMultiply.addEventListener("click", () => {
-  lastOperation = "x";
-  storedValue = Number(displayBig.textContent);
-  calculate();
-  clearBigDisplay();
-});
-
-btnDivide.addEventListener("click", () => {
-  lastOperation = "/";
-  storedValue = Number(displayBig.textContent);
-  calculate();
-  clearBigDisplay();
-});
-
-function smallDisplayUpdate() {
-  clearBigDisplay();
+function clearSmallDisplay() {
+  displaySmall.textContent = "";
 }
 
-btnEqual.addEventListener("click", () => {
+function errorMsg() {
+  displaySmall.textContent = "PRESS C TO RESET";
+  displayBig.textContent = "ERROR";
+  return;
+}
+function doBasicOperation() {
+  storedValue = Number(displayBig.textContent);
   calculate();
-});
+  clearBigDisplay();
+}
 
 function calculate() {
   a = storedValue;
   b = Number(displayBig.textContent);
+
   if (lastOperation === "+") {
     displayBig.textContent = add(a, b);
-    displaySmall.textContent = `${storedValue}${lastOperation}`;
+    displaySmall.textContent = `${a}${lastOperation}`;
   }
 
   if (lastOperation === "-") {
     displayBig.textContent = subtract(a, b);
-    displaySmall.textContent = `${storedValue}${lastOperation}`;
+    displaySmall.textContent = `${a}${lastOperation}`;
   }
 
   if (lastOperation === "x") {
     displayBig.textContent = multiply(a, b);
-    displaySmall.textContent = `${storedValue}${lastOperation}`;
+    displaySmall.textContent = `${a}${lastOperation}`;
   }
 
-  if (lastOperation === "/") {
+  if (lastOperation === "÷") {
+    if (b == 0) {
+      return errorMsg();
+    }
     displayBig.textContent = divide(a, b);
-    displaySmall.textContent = `${storedValue}${lastOperation}`;
+    displaySmall.textContent = `${a}${lastOperation}`;
+  }
+
+  if (lastOperation === "%") {
+    displayBig.textContent = percent(a);
+    displaySmall.textContent = `${a}`;
+  }
+
+  if (lastOperation === "√") {
+    displayBig.textContent = root(a);
+    displaySmall.textContent = `${a}`;
   }
 }
