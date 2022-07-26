@@ -87,7 +87,7 @@ main {
 }
 .btn:active {
   box-shadow: none;
-  font-size: 24px;
+  font-size: 32px;
   transform: translateY(2px);
 }
 
