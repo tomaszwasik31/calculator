@@ -159,8 +159,8 @@ function doBasicOperation() {
 
 //reduce length of string
 function reduceLength() {
-    if(displayBig.textContent.length>8)
-  displayBig.textContent = `${displayBig.textContent.substring(0, 7)}e`;
+  if (displayBig.textContent.length > 8)
+    displayBig.textContent = `${displayBig.textContent.substring(0, 7)}e`;
 }
 function calculate() {
   let a = storedValue;
@@ -198,7 +198,7 @@ function calculate() {
     displayBig.textContent = root(a);
     displaySmall.textContent = `${a}`;
   }
-  reduceLength()
+  reduceLength();
 }
 
 //keyboard support
