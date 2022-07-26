@@ -203,7 +203,7 @@ function calculate() {
 
 //keyboard support
 
-window.addEventListener("keydown", function (e) {
+window.addEventListener("keyup", function (e) {
   const keyBtn = document.querySelector(`button[data-key="${e.key}"]`);
   if (!keyBtn) return;
   keyBtn.click();
