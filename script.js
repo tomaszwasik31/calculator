@@ -133,7 +133,9 @@ let root = (a) => round(Math.sqrt(a));
 let round = (a) => Math.round(a * 1000000) / 1000000;
 
 function populateBigDisplay() {
-  displayBig.textContent += inputNumber;
+  if (displayBig.textContent.length < 8) {
+    displayBig.textContent += inputNumber;
+  }
 }
 
 function clearBigDisplay() {
@@ -155,6 +157,11 @@ function doBasicOperation() {
   clearBigDisplay();
 }
 
+//reduce length of string
+function reduceLength() {
+    if(displayBig.textContent.length>8)
+  displayBig.textContent = `${displayBig.textContent.substring(0, 7)}e`;
+}
 function calculate() {
   let a = storedValue;
   let b = Number(displayBig.textContent);
@@ -191,6 +198,7 @@ function calculate() {
     displayBig.textContent = root(a);
     displaySmall.textContent = `${a}`;
   }
+  reduceLength()
 }
 
 //keyboard support
