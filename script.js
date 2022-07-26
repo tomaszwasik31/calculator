@@ -123,6 +123,7 @@ btnC.addEventListener("click", () => {
   clearBigDisplay();
   clearSmallDisplay();
   lastOperation === "";
+  storedValue ===0;
 });
 
 btnCe.addEventListener("click", () => {
