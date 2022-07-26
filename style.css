@@ -5,7 +5,6 @@ body {
 p {
   margin: 0;
   padding: 0;
-  
 }
 main {
   display: flex;
@@ -27,19 +26,17 @@ main {
   margin-bottom: 25px;
   padding: 5px;
   pointer-events: none;
-  
 }
 
 .displayBig,
 .displaySmall {
   position: relative;
-  
 }
-.displayBig{
-    height: 55px;
+.displayBig {
+  height: 55px;
 }
 .displaySmall {
-    height: 29px;
+  height: 29px;
 }
 .borders {
   border-radius: 8px;
@@ -50,7 +47,6 @@ main {
   color: #372929;
   font-family: "digital-7regular";
   font-size: 60px;
-  
 }
 .backgroundTxt {
   color: #3729290f;
