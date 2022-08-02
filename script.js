@@ -168,7 +168,8 @@ function doBasicOperation() {
 //reduce length of string
 function reduceLength() {
   if (displayBig.textContent.length > 10)
-    displayBig.textContent = `${displayBig.textContent.substring(0, 9)}e`;
+    displayBig.textContent = `${displayBig.textContent.substring(0, 9)} E`;
+    
 }
 function calculate() {
   let a = storedValue;
